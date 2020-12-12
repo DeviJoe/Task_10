@@ -23,6 +23,6 @@ public class Main {
                 .toList();
 
         System.out.println();
-
+        System.out.println(result.toString());
     }
 }
