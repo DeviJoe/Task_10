@@ -5,14 +5,24 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Класс реализует аналог Stream API для фильтрации листа квартир по заданным параметрам
+ */
 public class FilterStream {
 
+    // лист квартир
     List<Flat> database;
 
     public FilterStream(List<Flat> database) {
+        // ЛИСТ ВНУТРИ ПОТОКА НЕЛЬЗЯ ИЗМЕНЯТЬ!!! Ограничение наложено специально во избежание ошибок
         this.database = Collections.unmodifiableList(database);
     }
 
+    /**
+     * Создает новый FilterStream, внутри которого в листе лежат отобранные по параметру "Имя района" квартиры
+     * @param district район, квартиры в котором пройдут фильтрацию
+     * @return новый FilterStream с отфильтрованными значениями
+     */
     public FilterStream filterByDistrict(String district) {
         if (database == null) return null;
         List<Flat> result = new ArrayList<>();
@@ -24,6 +34,8 @@ public class FilterStream {
          }
         return new FilterStream(result);
     }
+
+    // ДАЛЬШЕ ВСЕ КОММЕНТАРИИ БУУТ АНАЛОГИЧНЫ ТОМУ, ЧТО НАПИСАНО ВЫШЕ, ПОЭТОМУ Я ИХ НЕ ПИШУ!!!
 
     public FilterStream filterByRooms(Integer down, Integer top) {
         if (database == null) return null;
@@ -107,11 +119,19 @@ public class FilterStream {
         return new FilterStream(result);
     }
 
-
+    /**
+     * Закрывающий работу с потоком метод, возвращает отфильтрованный лист
+     * @return полученный в результате всех фильтраций лист
+     */
     public List<Flat> toList() {
         return database;
     }
 
+    /**
+     * Статический метод, создает обект FilterStream для дальнейшей поэтапной фильтрации. Открывающий метод
+     * @param list лист, значения в котором будем фильтровать
+     * @return новый объект FilterStream для работы с поэтапной фильтрацией
+     */
     public static FilterStream filter(List<Flat> list) {
         return new FilterStream(list);
     }

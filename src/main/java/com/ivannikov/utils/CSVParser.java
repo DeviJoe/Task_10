@@ -2,7 +2,6 @@ package com.ivannikov.utils;
 
 import au.com.bytecode.opencsv.CSVReader;
 import com.ivannikov.model.Flat;
-import lombok.SneakyThrows;
 
 import java.io.FileReader;
 import java.io.IOException;
