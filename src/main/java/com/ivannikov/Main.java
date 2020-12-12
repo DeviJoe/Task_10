@@ -25,5 +25,9 @@ public class Main {
         for (Flat flat : result) {
             System.out.println(flat.toString());
         }
+
+        System.out.println();
+        System.out.println(result.toString());
+
     }
 }
