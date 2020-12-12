@@ -22,7 +22,6 @@ public class Main {
                 .filterByDistrict("Central")
                 .toList();
 
-        System.out.println();
         for (Flat flat : result) {
             System.out.println(flat.toString());
         }
