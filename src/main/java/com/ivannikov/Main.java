@@ -26,8 +26,5 @@ public class Main {
             System.out.println(flat.toString());
         }
 
-        System.out.println();
-        System.out.println(result.toString());
-
     }
 }
